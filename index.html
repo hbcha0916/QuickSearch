@@ -3,7 +3,8 @@
     
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./resource/ICON.ico" />
     <title>시작페이지</title>
@@ -18,11 +19,69 @@
     <div class="body_header">
         <h1> 🔍QuickSearch🔎 </h1>
     </div>
+    <div class="msg_invalid" id="msg_invalid">
+        오류가 발생
+    </div>
+    <div class="setting_window">
+        <button type="button" class="down_settings" alt="설정 저장" title="설정 파일 내보내기" onclick="export_settings()"></button>
+        <label for="file" class="import_settings" alt="설정 불러오기" title="설정 파일 불러오기"></label>
+        <input type="file" name="file" id="file" accept=".json" style="display: none;"> 
+        <div class="set_MainMenu">
+            <h3>바로가기 키 설정</h3>
+            <button type="button" class="append_link" alt="링크추가" title="요소 추가" onclick="append_quick_link()"></button>
+            <table class="set_MainMenu_table">
+                <!-- <th class="set_MainMenu_table_th">1</th>
+                <th class="set_MainMenu_table_th">2</th>
+                <th class="set_MainMenu_table_th">3</th>
+                <th class="set_MainMenu_table_th">4</th>
+                <th class="set_MainMenu_table_th">5</th>
+                <th class="set_MainMenu_table_th">6</th>
+                <th class="set_MainMenu_table_th">7</th>
+                <th class="set_MainMenu_table_th">8</th>
+                <th class="set_MainMenu_table_th">9</th>
+                <th class="set_MainMenu_table_th">10</th>
+                <th class="set_MainMenu_table_th">11</th>
+                <th class="set_MainMenu_table_th">12</th>
+                <th class="set_MainMenu_table_th">13</th>
+                <th class="set_MainMenu_table_th">14</th>
+                <th class="set_MainMenu_table_th">15</th> -->
+            </table>
+        </div>
+    </div>
     <h1>Hello World!</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae justo eu neque maximus pellentesque. Aliquam congue vestibulum orci, vel placerat nisi accumsan a. Donec commodo ante sed mi congue vehicula. Ut sed ante tempus massa tempus interdum. Quisque vitae placerat quam. Pellentesque arcu risus, cursus sed justo ac, lobortis iaculis lectus. Suspendisse non dolor et enim tempus tincidunt. Pellentesque mattis purus fringilla, vehicula ante ut, mattis ante. Nulla id purus id dui facilisis scelerisque nec non est.</p>
     <a href="#">Link</a>
-    <button type="button" class="btn_settings" alt="설정" onclick=""></button>
-    <button type="button" class="darkmode_settings" id="toggleTheme" alt="설정" onclick=""></button>
+    <button type="button" class="btn_settings" alt="설정" title="설정창 열기/닫기" onclick="$('.setting_window').toggle();"></button>
+    <button type="button" class="darkmode_settings" id="toggleTheme" alt="다크모드" title="다크모드 활성화/비활성화"></button>
+    <button type="button" class="visit_developer" alt="개발자 블로그" title="개발자 블로그" onclick="window.open('https://hbcha0916.tistory.com/')"></button>
+    <button type="button" class="visit_git"  alt="해당 프로젝트 git" title="QuickSearch Github" onclick="window.open('https://github.com/hbcha0916/QuickSearch/')"></button>
+    <div class="MainMenu">
+        <table class="MainMenu_table">
+            <!-- <th class="MainMenu_table_th">1</th>
+            <th class="MainMenu_table_th">2</th>
+            <th class="MainMenu_table_th">3</th>
+            <th class="MainMenu_table_th">4</th>
+            <th class="MainMenu_table_th">5</th>
+            <th class="MainMenu_table_th">6</th>
+            <th class="MainMenu_table_th">7</th>
+            <th class="MainMenu_table_th">8</th>
+            <th class="MainMenu_table_th">9</th>
+            <th class="MainMenu_table_th">10</th>
+            <th class="MainMenu_table_th">11</th>
+            <th class="MainMenu_table_th">12</th>
+            <th class="MainMenu_table_th">13</th>
+            <th class="MainMenu_table_th">14</th>
+            <th class="MainMenu_table_th">15</th> -->
+        </table>
+    </div>
+
+    <div class="Clock">   
+        <div id="Clock" class="TIME">00:00</div>
+        <div id="Clockday" class="DAY">00/00/00</div>
+    </div>
+    <form method="GET" id="form" onsubmit="return false;" action="https://www.google.com/search">
+        <input type="text" style="display: none;" id="formText" >
+    </form>
 </body>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src='js.js'></script>
