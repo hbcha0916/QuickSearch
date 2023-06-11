@@ -20,3 +20,16 @@ document.getElementById("toggleTheme").addEventListener("click",() => {
     }
 })
 
+window.addEventListener('paste', ({ clipboardData: { items } }) => {
+    for (const item of items) {
+        if (item.type.includes('image')) {
+            const blob = item.getAsFile();
+        }
+
+        if (item.type === 'text/plain') {
+            item.getAsString((text) => {
+                console.log(text);
+            });
+        }
+    }
+});
