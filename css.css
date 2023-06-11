@@ -1,6 +1,6 @@
 html.dark {
     /* background-image: url("./resource/BGIB.png"); */
-    background-image: url("C:/StartPage/FIRST_PROJECT_RESOURCE/BGI3.png");
+    background-image: url("file:///C:/StartPage/FIRST_PROJECT_RESOURCE/BGI3.png");
     color: #bbb;
     /* --btn_settings_background-color: red; */
     --btn_settings_area_invert: invert(100%);
