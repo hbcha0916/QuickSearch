@@ -221,7 +221,7 @@ body{
 .import_settings:hover{
     filter: var(--btn_settings_area_invert_hover);
 }
-/* 요소 추가 버튼 */
+/* 요소 추가/삭제 버튼 */
 .append_link{
     position: fixed;
     top:15px;
@@ -236,6 +236,28 @@ body{
 }
 
 .append_link:hover{
+    filter: var(--btn_settings_area_invert_hover);
+}
+
+label.remove_link{
+    position: fixed;
+    top:15px;
+    right:60px;
+    width: var(--set_icons_size_1_1);
+    height: var(--set_icons_size_1_1);
+    background-color: var(--btn_settings_background-color);
+    background-image: url("./resource/UIicons/delete.png");
+    border:none;
+    background-size: 100%;
+    filter: var(--btn_settings_area_invert);
+}
+input[type="checkbox"].remove_link{
+    position: fixed;
+    top:20px;
+    right:90px;
+}
+
+.remove_link:hover{
     filter: var(--btn_settings_area_invert_hover);
 }
 /* 퀵 링크 부분 */
@@ -273,6 +295,11 @@ body{
 
 .set_MainMenu_table_th:active{
     background-color: rgba(0,0,0,0);
+}
+
+.setting_division{
+    text-align : center;
+    padding: 20px 0 0 0;
 }
 
 /* 퀵 링크 부분끝 */

@@ -26,9 +26,22 @@
         <button type="button" class="down_settings" alt="설정 저장" title="설정 파일 내보내기" onclick="export_settings()"></button>
         <label for="file" class="import_settings" alt="설정 불러오기" title="설정 파일 불러오기"></label>
         <input type="file" name="file" id="file" accept=".json" style="display: none;"> 
+
+        <div class="setting_division">
+            <input type="checkbox" id="newTabEnable" onclick="newtabcheck()">
+            <label for="newTabEnable">모든 검색을 새 탭으로 열기</label>
+        </div>
+        
+
         <div class="set_MainMenu">
             <h3>바로가기 키 설정</h3>
             <button type="button" class="append_link" alt="링크추가" title="요소 추가" onclick="append_quick_link()"></button>
+
+            <input type="checkbox" id="remove_link" class="remove_link" onclick="remove_quick_link()">
+            <label for="remove_link" class="remove_link" alt="링크추가" title="요소 삭제"></label>
+
+            
+
             <table class="set_MainMenu_table">
                 <!-- <th class="set_MainMenu_table_th">1</th>
                 <th class="set_MainMenu_table_th">2</th>

@@ -1,10 +1,12 @@
 let quick_link_args_count = null;
+let newtab = null;
+let remove_enable = false;
 
 $(document).ready(function(){
     $("#msg_invalid").hide();
     $(".setting_window").hide();
     load_local_storage();
-    
+
 });
 
 function load_local_storage(){
@@ -27,17 +29,33 @@ function load_local_storage(){
         }
     }
     // console.log(quick_link_args_count);
+    // 새탭여부 불러오기
+    newtab = Boolean(localStorage.getItem("newTabEnable"));
+    if (newtab){
+        $("#newTabEnable").prop("checked", true);
+    }else if (!newtab){
+        $("#newTabEnable").prop("checked", false);
+    }else{
+        $("#newTabEnable").prop("checked", true);
+        localStorage.setItem("newTabEnable","true");
+    }
 
 }
 
 function edit_quick_link(number,link,name){
     var modify_value_arg_name;
     var modify_value_arg_link;
-    modify_value_arg_name = prompt("\""+name+"\"의 이름을 수정해 주세요.",name);
-    modify_value_arg_link = prompt("\""+modify_value_arg_name+"\"의 링크를 수정해 주세요.",link);
+    if (remove_enable){
+        localStorage.removeItem("quick_link_arg_"+number+"_link",modify_value_arg_link);
+        localStorage.removeItem("quick_link_arg_"+number+"_name",modify_value_arg_name);
+    }else{
+        modify_value_arg_name = prompt("\""+name+"\"의 이름을 수정해 주세요.",name);
+        modify_value_arg_link = prompt("\""+modify_value_arg_name+"\"의 링크를 수정해 주세요.",link);
+    
+        localStorage.setItem("quick_link_arg_"+number+"_link",modify_value_arg_link);
+        localStorage.setItem("quick_link_arg_"+number+"_name",modify_value_arg_name);
+    }
 
-    localStorage.setItem("quick_link_arg_"+number+"_link",modify_value_arg_link);
-    localStorage.setItem("quick_link_arg_"+number+"_name",modify_value_arg_name);
 
     load_local_storage();
 }
@@ -60,6 +78,14 @@ function append_quick_link(){
     localStorage.setItem("quick_link_args_count",quick_link_args_count);
 
     load_local_storage();
+}
+
+function remove_quick_link(){
+    if ($("#remove_link").prop("checked")){
+        remove_enable = true;
+    }else{
+        remove_enable = false;
+    }
 }
 
 const storedTheme = localStorage.getItem("darkTheme");
@@ -94,22 +120,8 @@ window.addEventListener('paste', ({ clipboardData: { items } }) => {
         if (item.type === 'text/plain') {
             item.getAsString((text) => {
                 console.log(text);
-                window.open("https://www.google.com/search?q="+text,'_blank');
-                // var form = document.createElement("form");
-                // form.setAttribute("method","get"); 
-                // form.setAttribute("action","https://www.google.com/search/");  
-                // document.body.appendChild(form); 
-                // var input_id = document.createElement("input");
-
-                // input_id.setAttribute("type", "hidden");
-
-                // input_id.setAttribute("name", text);      //name 속성 지정
-
-                // form.appendChild(input_id);                 //from 태그에 추가
-
-                // //폼전송
-
-                // form.submit();
+                go_search(text,"g");
+                // window.open("https://www.google.com/search?q="+text,'_blank');
             });
         }
     }
@@ -189,6 +201,12 @@ function export_settings(){
 
     data.push(backup_day);
 
+    var bak_newtab ={
+        newtab: newtab
+    };
+
+    data.push(bak_newtab);
+
     var quick_link_args_count_bak ={
         quick_link_args_count: quick_link_args_count
     };
@@ -241,15 +259,45 @@ function parJSON(json){
         if (data[i].arg_name!=null || data[i].arg_name!=undefined){
             localStorage.setItem("quick_link_arg_"+i+"_name",data[i].arg_name);
             localStorage.setItem("quick_link_arg_"+i+"_link",data[i].arg_link);
+        }else if(data[i].newtab!=null || data[i].newtab!=undefined){
+            localStorage.setItem("newTabEnable",String(data[i].newtab));
         }
 
         if (i==maxDataIDX-1){
             localStorage.setItem("quick_link_args_count",data[i].quick_link_args_count);
         }
     }
-    
+    load_local_storage();
 }
 
+function go_search(text,engine){
+    if (newtab){
+        run_search(text,engine,true);
+    }else{
+        run_search(text,engine,false);
+    }
+    function run_search(text,engine,newtab){
+        switch(engine){
+            case "g":
+                if(newtab){
+                    window.open("https://www.google.com/search?q="+text,'_blank');
+                }else{
+                    location.href = "https://www.google.com/search?q="+text;
+                }
+
+        }
+    }
+}
+
+function newtabcheck(){
+    if ($("#newTabEnable").prop("checked")){
+        localStorage.setItem("newTabEnable","true");
+        newtab = true;
+    }else{
+        localStorage.setItem("newTabEnable","false");
+        newtab = false;
+    }
+}
 
 
 //오류 메시지 출력
