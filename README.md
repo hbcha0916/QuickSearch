@@ -9,7 +9,6 @@
 ![Untitled](QuickSearch3%200%20fc73fb7789554ed8a07973a596b051ce/Untitled%203.png)
 
 # 핵심 기능
-
 ---
 
 1. 빠른 검색
@@ -21,7 +20,6 @@
     - 저장된 로컬 스토리지를 `json`으로 백업 및 복원
 
 # 기능 설명
-
 ---
 
 ## 검색 효율적
@@ -56,7 +54,6 @@
 > - 단, 배경화면은 바꿀수 없어요.
 
 # 시작페이지 적용 방법(chrome)
-
 ---
 
 1. [chrome 웹 스토어](https://chrome.google.com/webstore/search/new%20tab%20redirect?hl=ko) 에서 `new tab redirect` 를 검색하고 내려받아요.
@@ -76,7 +73,6 @@
         
 
 # 소통
-
 ---
 
 📋Blog : [https://hbcha0916.tistory.com/](https://hbcha0916.tistory.com/)
