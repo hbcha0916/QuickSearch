@@ -10,6 +10,22 @@ $(document).ready(function(){
 });
 
 function load_local_storage(){
+        // 새탭여부 불러오기
+    newtab = localStorage.getItem("newTabEnable");
+    if (newtab=="true"){
+        newtab = Boolean(true);
+    }else{
+        newtab = Boolean(false);
+    }
+    // console.log("newtab:"+newtab);
+    if (newtab==true){
+        $("#newTabEnable").prop("checked", true);
+    }else if (newtab==false){
+        $("#newTabEnable").prop("checked", false);
+    }else{
+        $("#newTabEnable").prop("checked", true);
+        localStorage.setItem("newTabEnable","true");
+    }
     //quickLink 불러오기작업
     $('.MainMenu_table th').remove();
     $('.set_MainMenu_table th').remove();
@@ -17,28 +33,24 @@ function load_local_storage(){
     if (quick_link_args_count==null || quick_link_args_count==0){ 
         quick_link_args_count = 0;
     }else{
-        console.log(quick_link_args_count);
+        // console.log(quick_link_args_count);
         for(var i = 0; i<quick_link_args_count;i++){
-
             var link = localStorage.getItem("quick_link_arg_"+i+"_link");
             var name = localStorage.getItem("quick_link_arg_"+i+"_name");
-            $('.MainMenu_table').append("<th class=\"MainMenu_table_th\" onclick=\"window.open('"+link+"')\">"+name+"</th>");
+            if(newtab==true){
+                $('.MainMenu_table').append("<th class=\"MainMenu_table_th\" onclick=\"window.open('"+link+"')\">"+name+"</th>");
+            }else{
+                $('.MainMenu_table').append("<th class=\"MainMenu_table_th\" onclick=\"location.href='"+link+"'\">"+name+"</th>");
+            }
+            
+            
             // $('.set_MainMenu_table').append("<th class=\"MainMenu_table_th\" onclick=\"edit_quick_link("+link+","+name+")\">"+name+"</th>");
             $('.set_MainMenu_table').append("<th class=\"set_MainMenu_table_th\" onclick=\"edit_quick_link("+i+",'"+link+"',"+"\'"+name+"\'"+")\">"+name+"</th>");
 
         }
     }
     // console.log(quick_link_args_count);
-    // 새탭여부 불러오기
-    newtab = Boolean(localStorage.getItem("newTabEnable"));
-    if (newtab){
-        $("#newTabEnable").prop("checked", true);
-    }else if (!newtab){
-        $("#newTabEnable").prop("checked", false);
-    }else{
-        $("#newTabEnable").prop("checked", true);
-        localStorage.setItem("newTabEnable","true");
-    }
+
 
 }
 
@@ -119,7 +131,7 @@ window.addEventListener('paste', ({ clipboardData: { items } }) => {
 
         if (item.type === 'text/plain') {
             item.getAsString((text) => {
-                console.log(text);
+                // console.log(text);
                 go_search(text,"g");
                 // window.open("https://www.google.com/search?q="+text,'_blank');
             });
@@ -128,7 +140,7 @@ window.addEventListener('paste', ({ clipboardData: { items } }) => {
 });
 
 var columnCount = $('.MainMenu_table').find('th').length;
-console.log(columnCount);
+// console.log(columnCount);
 
 
 //시계부분
@@ -297,6 +309,7 @@ function newtabcheck(){
         localStorage.setItem("newTabEnable","false");
         newtab = false;
     }
+    load_local_storage();
 }
 
 
