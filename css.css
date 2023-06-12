@@ -4,6 +4,7 @@
 html.dark {
     background-image: url("./resource/BGIB.png");
     color: #bbb;
+    --color:#bbb;
     --btn_settings_background-image: url("./resource/UIicons/darkmode_on.png");
     --btn_settings_area_invert: invert(60%);
     --btn_settings_area_invert_hover: invert(40%);
@@ -15,6 +16,7 @@ html.dark {
 html{
     background-image: url("./resource/BGIW.png");
     color: #343434;
+    --color: #343434;
     --btn_settings_background-image: url("./resource/UIicons/darkmode.png");
     --btn_settings_area_invert: invert(10%);
     --btn_settings_area_invert_hover: invert(100%);
@@ -24,7 +26,7 @@ html{
     --mainmenu_th_hover: rgba(201, 201, 201, 0.37);
 }
 body{
-    padding: 80px 0 0 0;
+    padding: 100px 0 0 0;
 }
 
 /* ==============================================================오류 출력 */
@@ -307,8 +309,41 @@ label.remove_link:hover{
 
 /* 시계 */
 .TIME{
-    font-size: 400%;
+    font-size: 600%;
 }
 .Clock{
+    padding: 20px 0 0 0;
     text-align: center;
 }
+
+/* 본문 */
+
+.searchBar{
+    padding: 10px 0 0 0;
+    margin: 0 auto;
+    width:70%;
+    background-color: var(--obj_background_color);
+    backdrop-filter: var(--obj_blur);
+    box-shadow: var(--obj_background_shadow);
+    border-radius: 20px;
+    border: none;
+    text-align : center;
+}
+
+input[id=Search_Bar_Entity] {
+    font-size: 25px;
+    padding: 0 30px 0 30px;
+    background-color: rgba(0,0,0,0);
+    width: 90%;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    color: var(--color);
+}
+
+.searchEngine{
+    table-layout: fixed;
+    width: 100%;
+}
+
+/* 본문 끝 */

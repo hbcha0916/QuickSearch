@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" >
     
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./resource/ICON.ico" />
     <title>시작페이지</title>
@@ -15,12 +15,55 @@
     </style>
     
 </head>
-<body>
+<body onKeypress="if(window.event.keyCode==13 && $('#Search_Bar_Entity').val()!=''){press_enter()}">
     <div class="body_header">
         <h1> 🔍QuickSearch🔎 </h1>
     </div>
     <div class="msg_invalid" id="msg_invalid">
         오류가 발생
+    </div>
+    
+    <!-- <h1>Hello World!</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae justo eu neque maximus pellentesque. Aliquam congue vestibulum orci, vel placerat nisi accumsan a. Donec commodo ante sed mi congue vehicula. Ut sed ante tempus massa tempus interdum. Quisque vitae placerat quam. Pellentesque arcu risus, cursus sed justo ac, lobortis iaculis lectus. Suspendisse non dolor et enim tempus tincidunt. Pellentesque mattis purus fringilla, vehicula ante ut, mattis ante. Nulla id purus id dui facilisis scelerisque nec non est.</p>
+    <a href="#">Link</a> -->
+    <div class="searchBar">
+        <input type="text" id="Search_Bar_Entity" placeholder="검색어 입력" autofocus autocomplete="on" onKeypress="if(window.event.keyCode==13 && $('#Search_Bar_Entity').val()!=''){press_enter()}">
+        <table class="searchEngine">
+            <th class="MainMenu_table_th" id="google" onclick="searchEngine('g')">Google</th>
+            <th class="MainMenu_table_th" id="naver" onclick="searchEngine('n')">Naver</th>
+            <th class="MainMenu_table_th" id="stackoverflow" onclick="searchEngine('s')">StackOverFlow</th>
+            <th class="MainMenu_table_th" id="youtube" onclick="searchEngine('y')">Youtube</th>
+        </table>
+    </div>
+    
+
+    <button type="button" class="btn_settings" alt="설정" title="설정창 열기/닫기" onclick="$('.setting_window').toggle();"></button>
+    <button type="button" class="darkmode_settings" id="toggleTheme" alt="다크모드" title="다크모드 활성화/비활성화"></button>
+    <button type="button" class="visit_developer" alt="개발자 블로그" title="개발자 블로그" onclick="window.open('https://hbcha0916.tistory.com/')"></button>
+    <button type="button" class="visit_git"  alt="해당 프로젝트 git" title="QuickSearch Github" onclick="window.open('https://github.com/hbcha0916/QuickSearch/')"></button>
+    <div class="MainMenu">
+        <table class="MainMenu_table">
+            <!-- <th class="MainMenu_table_th">1</th>
+            <th class="MainMenu_table_th">2</th>
+            <th class="MainMenu_table_th">3</th>
+            <th class="MainMenu_table_th">4</th>
+            <th class="MainMenu_table_th">5</th>
+            <th class="MainMenu_table_th">6</th>
+            <th class="MainMenu_table_th">7</th>
+            <th class="MainMenu_table_th">8</th>
+            <th class="MainMenu_table_th">9</th>
+            <th class="MainMenu_table_th">10</th>
+            <th class="MainMenu_table_th">11</th>
+            <th class="MainMenu_table_th">12</th>
+            <th class="MainMenu_table_th">13</th>
+            <th class="MainMenu_table_th">14</th>
+            <th class="MainMenu_table_th">15</th> -->
+        </table>
+    </div>
+
+    <div class="Clock">   
+        <div id="Clock" class="TIME">00:00</div>
+        <div id="Clockday" class="DAY">00/00/00</div>
     </div>
     <div class="setting_window">
         <button type="button" class="down_settings" alt="설정 저장" title="설정 파일 내보내기" onclick="export_settings()"></button>
@@ -30,6 +73,11 @@
         <div class="setting_division">
             <input type="checkbox" id="newTabEnable" onclick="newtabcheck()">
             <label for="newTabEnable">모든 검색을 새 탭으로 열기</label>
+        </div>
+
+        <div class="setting_division">
+            <input type="checkbox" id="focusClipEnable" onclick="focusClipEnable()">
+            <label for="focusClipEnable">붙여놓기 시 바로 검색</label>
         </div>
         
 
@@ -61,40 +109,7 @@
             </table>
         </div>
     </div>
-    <!-- <h1>Hello World!</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae justo eu neque maximus pellentesque. Aliquam congue vestibulum orci, vel placerat nisi accumsan a. Donec commodo ante sed mi congue vehicula. Ut sed ante tempus massa tempus interdum. Quisque vitae placerat quam. Pellentesque arcu risus, cursus sed justo ac, lobortis iaculis lectus. Suspendisse non dolor et enim tempus tincidunt. Pellentesque mattis purus fringilla, vehicula ante ut, mattis ante. Nulla id purus id dui facilisis scelerisque nec non est.</p>
-    <a href="#">Link</a> -->
-    <button type="button" class="btn_settings" alt="설정" title="설정창 열기/닫기" onclick="$('.setting_window').toggle();"></button>
-    <button type="button" class="darkmode_settings" id="toggleTheme" alt="다크모드" title="다크모드 활성화/비활성화"></button>
-    <button type="button" class="visit_developer" alt="개발자 블로그" title="개발자 블로그" onclick="window.open('https://hbcha0916.tistory.com/')"></button>
-    <button type="button" class="visit_git"  alt="해당 프로젝트 git" title="QuickSearch Github" onclick="window.open('https://github.com/hbcha0916/QuickSearch/')"></button>
-    <div class="MainMenu">
-        <table class="MainMenu_table">
-            <!-- <th class="MainMenu_table_th">1</th>
-            <th class="MainMenu_table_th">2</th>
-            <th class="MainMenu_table_th">3</th>
-            <th class="MainMenu_table_th">4</th>
-            <th class="MainMenu_table_th">5</th>
-            <th class="MainMenu_table_th">6</th>
-            <th class="MainMenu_table_th">7</th>
-            <th class="MainMenu_table_th">8</th>
-            <th class="MainMenu_table_th">9</th>
-            <th class="MainMenu_table_th">10</th>
-            <th class="MainMenu_table_th">11</th>
-            <th class="MainMenu_table_th">12</th>
-            <th class="MainMenu_table_th">13</th>
-            <th class="MainMenu_table_th">14</th>
-            <th class="MainMenu_table_th">15</th> -->
-        </table>
-    </div>
 
-    <div class="Clock">   
-        <div id="Clock" class="TIME">00:00</div>
-        <div id="Clockday" class="DAY">00/00/00</div>
-    </div>
-    <form method="GET" id="form" onsubmit="return false;" action="https://www.google.com/search">
-        <input type="text" style="display: none;" id="formText" >
-    </form>
 </body>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src='js.js'></script>
