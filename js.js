@@ -58,8 +58,12 @@ function edit_quick_link(number,link,name){
     var modify_value_arg_name;
     var modify_value_arg_link;
     if (remove_enable){
-        localStorage.removeItem("quick_link_arg_"+number+"_link",modify_value_arg_link);
-        localStorage.removeItem("quick_link_arg_"+number+"_name",modify_value_arg_name);
+        if(confirm("해당 내용이 지워집니다. 계속 하시겠습니까?")){
+            // localStorage.removeItem("quick_link_arg_"+number+"_link",modify_value_arg_link);
+            // localStorage.removeItem("quick_link_arg_"+number+"_name",modify_value_arg_name);
+            console.log("hi");
+        }
+        
     }else{
         modify_value_arg_name = prompt("\""+name+"\"의 이름을 수정해 주세요.",name);
         modify_value_arg_link = prompt("\""+modify_value_arg_name+"\"의 링크를 수정해 주세요.",link);
