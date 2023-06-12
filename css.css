@@ -257,7 +257,7 @@ input[type="checkbox"].remove_link{
     right:90px;
 }
 
-.remove_link:hover{
+label.remove_link:hover{
     filter: var(--btn_settings_area_invert_hover);
 }
 /* 퀵 링크 부분 */
