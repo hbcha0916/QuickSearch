@@ -8,7 +8,11 @@ $(document).ready(function(){
     $("#msg_invalid").hide();
     $(".setting_window").hide();
     load_local_storage();
-
+    if ($('#Search_Bar_Entity').val()==undefined || $('#Search_Bar_Entity').val()==null || $('#Search_Bar_Entity').val()==""){
+        $('.autoComArea').hide();
+    }else{
+        $('.autoComArea').show();
+    }
 });
 
 function load_local_storage(){
@@ -451,6 +455,39 @@ function focusClipEnable(){
     }
     load_local_storage();
 }
+
+//자동완성
+document.cookie = "safeCookie1=foo; SameSite=Lax"; 
+document.cookie = "safeCookie2=foo"; 
+document.cookie = "crossCookie=bar; SameSite=None; Secure";
+$('#Search_Bar_Entity').keyup(function(){
+    $.ajax({
+        url: "https://suggestqueries.google.com/complete/search?output=chrome&hl=ko&q="+$('#Search_Bar_Entity').val(),
+        dataType: "jsonp",
+        method: "GET"   
+    })
+    .done(function(json) {
+        $('.autoComArea').show();
+        $('.autoCom').empty();
+        // console.log(json[1].length);
+        // console.log(json[1]);
+        // console.log(json[1][1]);
+        var lengJson = 5;
+        if (lengJson>json[1].length){
+            lengJson = json[1].length;
+        }
+        for (var i = 0; i <lengJson ; i++){
+            // $('.tables').append(json[1][i]);
+            if (json[1][i]!=undefined || json[1][i]!=null || json[1][i]!=""){
+                $('.autoCom').append("<th class=\"MainMenu_table_th\" onclick=\"$('#Search_Bar_Entity').val(\'"+json[1][i]+"\'); press_enter(); \">"+json[1][i]+"</th>");
+            }
+        }
+        if (json[1].length==0){
+            $('.autoComArea').hide();
+        }
+
+    })
+});
 
 //오류 메시지 출력
 function msg_invalidMessage(msg){

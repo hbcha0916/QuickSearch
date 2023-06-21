@@ -26,8 +26,16 @@
     <!-- <h1>Hello World!</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae justo eu neque maximus pellentesque. Aliquam congue vestibulum orci, vel placerat nisi accumsan a. Donec commodo ante sed mi congue vehicula. Ut sed ante tempus massa tempus interdum. Quisque vitae placerat quam. Pellentesque arcu risus, cursus sed justo ac, lobortis iaculis lectus. Suspendisse non dolor et enim tempus tincidunt. Pellentesque mattis purus fringilla, vehicula ante ut, mattis ante. Nulla id purus id dui facilisis scelerisque nec non est.</p>
     <a href="#">Link</a> -->
+    <div class="autoComArea">
+        <table class="autoCom">
+
+        </table>
+    </div>
+    <div class="nullArea">
+        
+    </div>
     <div class="searchBar">
-        <input type="text" id="Search_Bar_Entity" placeholder="검색어 입력" autofocus autocomplete="on" onKeypress="if(window.event.keyCode==13 && $('#Search_Bar_Entity').val()!=''){press_enter()}">
+        <input type="text" id="Search_Bar_Entity" placeholder="검색어 입력" autofocus onKeypress="if(window.event.keyCode==13 && $('#Search_Bar_Entity').val()!=''){press_enter()}">
         <table class="searchEngine">
             <th class="MainMenu_table_th" id="google" onclick="searchEngine('g')">Google</th>
             <th class="MainMenu_table_th" id="naver" onclick="searchEngine('n')">Naver</th>
@@ -65,6 +73,28 @@
         <div id="Clock" class="TIME">00:00</div>
         <div id="Clockday" class="DAY">00/00/00</div>
     </div>
+
+    <!-- <div class="todoMemo">
+        <h1>TO DO</h1>
+        <table class="todoMemo_table">
+            <tr>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1</td>
+            </tr>
+        </table>
+    </div> -->
+
     <div class="setting_window">
         <button type="button" class="down_settings" alt="설정 저장" title="설정 파일 내보내기" onclick="export_settings()"></button>
         <label for="file" class="import_settings" alt="설정 불러오기" title="설정 파일 불러오기"></label>
