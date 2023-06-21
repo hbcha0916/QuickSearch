@@ -1,5 +1,7 @@
 # QuickSearch3.0
 
+![Untitled](QuickSearch3%200%20fc73fb7789554ed8a07973a596b051ce/example.gif)
+
 ![Untitled](QuickSearch3%200%20fc73fb7789554ed8a07973a596b051ce/Untitled.png)
 
 ![Untitled](QuickSearch3%200%20fc73fb7789554ed8a07973a596b051ce/Untitled%201.png)
