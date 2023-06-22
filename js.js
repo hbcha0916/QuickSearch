@@ -381,7 +381,12 @@ fileInput.onchange = () => {
     var fr = new FileReader();
     fr.readAsText(selectedFile, "utf-8");
     fr.onload = () => {
-        parJSON(fr.result);
+        try{
+            parJSON(fr.result);
+        } catch(e){
+            msg_invalidMessage("파일을 불러오는중 오류가 발생했습니다."+String(e.name));
+        }
+        
     }
 };
 
