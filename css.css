@@ -2,7 +2,7 @@
     --set_icons_size_1_1: 30px;
 }
 html.dark {
-    background-image: url("./resource/BGIB.png");
+    /* background-image: url("./resource/BGIB.png"); */
     color: #bbb;
     --color:#bbb;
     --btn_settings_background-image: url("./resource/UIicons/darkmode_on.png");
@@ -14,7 +14,7 @@ html.dark {
     --mainmenu_th_hover: rgba(0, 0, 0, 0.521);
 }
 html{
-    background-image: url("./resource/BGIW.png");
+    /* background-image: url("./resource/BGIW.png"); */
     color: #343434;
     --color: #343434;
     --btn_settings_background-image: url("./resource/UIicons/darkmode.png");
@@ -189,6 +189,10 @@ body{
     backdrop-filter: var(--obj_blur);
     box-shadow: var(--obj_background_shadow);
 }
+/* 배경설정버튼 */
+.set_BG{
+
+}
 /* 다운로드버튼 */
 .down_settings{
     position: fixed;
@@ -312,8 +316,15 @@ label.remove_link:hover{
     font-size: 600%;
 }
 .Clock{
-    padding: 20px 0 0 0;
+    padding: 0 10px 0 10px;
+    display: table;
+    margin: 0 auto;
     text-align: center;
+    background-color: var(--obj_background_color);
+    backdrop-filter: var(--obj_blur);
+    box-shadow: var(--obj_background_shadow);
+    border-radius: 20px;
+    border: none;
 }
 
 /* 본문 */

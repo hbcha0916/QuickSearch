@@ -3,6 +3,9 @@ let newtab = null;
 let remove_enable = false;
 let serach_engine = "g";
 let focusClip = null;
+let bgswitch = "true";
+let bg_custom_url_white = null;
+let bg_custom_url_dark = null;
 
 $(document).ready(function(){
     $("#msg_invalid").hide();
@@ -16,6 +19,25 @@ $(document).ready(function(){
 });
 
 function load_local_storage(){
+    //배경
+    bgswitch = localStorage.getItem("bg_default");
+    bg_custom_url_white = localStorage.getItem("bg_custom_url_white");
+    bg_custom_url_dark = localStorage.getItem("bg_custom_url_dark");
+    if (bgswitch==null || bgswitch == undefined || bgswitch == "true"){
+        localStorage.setItem("bg_default","true");
+        $("#default_BG").prop("checked", true);
+        $('#bg_url_dark').val(bg_custom_url_dark);
+        $('#bg_url_white').val(bg_custom_url_white);
+        $('html').css("background-image","url(\"./resource/BGIW.png\")");
+        $('html.dark').css("background-image","url(\"./resource/BGIB.png\")");
+    }else if(bgswitch == "false"){
+        $("#custom_BG").prop("checked", true);
+        $('#bg_url_dark').val(bg_custom_url_dark);
+        $('#bg_url_white').val(bg_custom_url_white);
+        $('html').css("background-image","url(\""+$('#bg_url_white').val()+"\")");
+        $('html.dark').css("background-image","url(\""+$('#bg_url_dark').val()+"\")");
+    }
+
         // 새탭여부 불러오기
     newtab = localStorage.getItem("newTabEnable");
     serach_engine = localStorage.getItem("serach_engine");
@@ -101,7 +123,7 @@ function load_local_storage(){
             
             
             // $('.set_MainMenu_table').append("<th class=\"MainMenu_table_th\" onclick=\"edit_quick_link("+link+","+name+")\">"+name+"</th>");
-            $('.set_MainMenu_table').append("<th class=\"set_MainMenu_table_th\" onclick=\"edit_quick_link("+i+",'"+link+"',"+"\'"+name+"\'"+")\">"+name+"</th>");
+            $('.set_MainMenu_table').append("<th class=\"set_MainMenu_table_th\" onclick=\"edit_quick_link("+i+",'"+link+"',"+"'"+name+"'"+")\">"+name+"</th>");
 
         }
     }
@@ -190,6 +212,8 @@ document.getElementById("toggleTheme").addEventListener("click",() => {
         html.classList.add("dark");
         localStorage.setItem("darkTheme", "true");
     }
+
+    load_local_storage();
 })
 
 window.addEventListener('paste', ({ clipboardData: { items } }) => {
@@ -299,6 +323,24 @@ function export_settings(){
 
     data.push(bak_serach_engine);
 
+    var bak_bgswitch ={
+        bgswitch: bgswitch
+    };
+
+    data.push(bak_bgswitch);
+
+    var bak_bg_custom_url_white = {
+        bg_custom_url_white: bg_custom_url_white
+    };
+
+    data.push(bak_bg_custom_url_white);
+
+    var bak_bg_custom_url_dark = {
+        bg_custom_url_dark: bg_custom_url_dark
+    };
+
+    data.push(bak_bg_custom_url_dark);
+
     var quick_link_args_count_bak ={
         quick_link_args_count: quick_link_args_count
     };
@@ -357,6 +399,12 @@ function parJSON(json){
             localStorage.setItem("focusClipEnable",String(data[i].focusClip));
         }else if(data[i].serach_engine!=null || data[i].serach_engine!=undefined){
             localStorage.setItem("serach_engine",String(data[i].serach_engine));
+        }else if(data[i].bg_custom_url_dark!=null || data[i].bg_custom_url_dark!=undefined){
+            localStorage.setItem("bg_custom_url_dark",String(data[i].bg_custom_url_dark));
+        }else if(data[i].bg_custom_url_white!=null || data[i].bg_custom_url_white!=undefined){
+            localStorage.setItem("bg_custom_url_white",String(data[i].bg_custom_url_white));
+        }else if(data[i].bgswitch!=null || data[i].bgswitch!=undefined){
+            localStorage.setItem("bg_default",String(data[i].bgswitch));
         }
 
         if (i==maxDataIDX-1){
@@ -488,6 +536,22 @@ $('#Search_Bar_Entity').keyup(function(){
 
     })
 });
+
+//배경변경
+function set_BGimg(){
+    if($('input[name="sel_BG"]:checked').val()=="default_BG"){
+        localStorage.setItem("bg_default","true");
+        $('html').css("background-image","url(\"./resource/BGIW.png\")");
+        $('html.dark').css("background-image","url(\"./resource/BGIB.png\")");
+    }else if($('input[name="sel_BG"]:checked').val()=="custom_BG"){
+        localStorage.setItem("bg_default","false");
+        $('html').css("background-image","url(\""+$('#bg_url_white').val()+"\")");
+        $('html.dark').css("background-image","url(\""+$('#bg_url_dark').val()+"\")");
+        localStorage.setItem("bg_custom_url_white",$('#bg_url_white').val());
+        localStorage.setItem("bg_custom_url_dark",$('#bg_url_dark').val());
+    }
+    load_local_storage();
+}
 
 //오류 메시지 출력
 function msg_invalidMessage(msg){

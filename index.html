@@ -23,14 +23,12 @@
         오류가 발생
     </div>
     
-    <!-- <h1>Hello World!</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae justo eu neque maximus pellentesque. Aliquam congue vestibulum orci, vel placerat nisi accumsan a. Donec commodo ante sed mi congue vehicula. Ut sed ante tempus massa tempus interdum. Quisque vitae placerat quam. Pellentesque arcu risus, cursus sed justo ac, lobortis iaculis lectus. Suspendisse non dolor et enim tempus tincidunt. Pellentesque mattis purus fringilla, vehicula ante ut, mattis ante. Nulla id purus id dui facilisis scelerisque nec non est.</p>
-    <a href="#">Link</a> -->
     <div class="autoComArea">
         <table class="autoCom">
 
         </table>
     </div>
+
     <div class="nullArea">
         
     </div>
@@ -51,22 +49,11 @@
     <button type="button" class="visit_git"  alt="해당 프로젝트 git" title="QuickSearch Github" onclick="window.open('https://github.com/hbcha0916/QuickSearch/')"></button>
     <div class="MainMenu">
         <table class="MainMenu_table">
-            <!-- <th class="MainMenu_table_th">1</th>
-            <th class="MainMenu_table_th">2</th>
-            <th class="MainMenu_table_th">3</th>
-            <th class="MainMenu_table_th">4</th>
-            <th class="MainMenu_table_th">5</th>
-            <th class="MainMenu_table_th">6</th>
-            <th class="MainMenu_table_th">7</th>
-            <th class="MainMenu_table_th">8</th>
-            <th class="MainMenu_table_th">9</th>
-            <th class="MainMenu_table_th">10</th>
-            <th class="MainMenu_table_th">11</th>
-            <th class="MainMenu_table_th">12</th>
-            <th class="MainMenu_table_th">13</th>
-            <th class="MainMenu_table_th">14</th>
-            <th class="MainMenu_table_th">15</th> -->
+
         </table>
+    </div>
+    <div class="nullArea">
+        
     </div>
 
     <div class="Clock">   
@@ -109,8 +96,21 @@
             <input type="checkbox" id="focusClipEnable" onclick="focusClipEnable()">
             <label for="focusClipEnable">붙여놓기 시 바로 검색</label>
         </div>
-        
 
+        <div class="setting_division">
+            <h3>배경화면 설정</h3>
+            <label>'붙여놓기 시 바로 검색' 기능을 끈 후에 링크를 붙여넣고 적용후 다시 키세요.</label><br>
+            <input type="radio" name="sel_BG" value="default_BG" id="default_BG" checked="checked" onclick="set_BGimg()">
+            <label for="default_BG">DEFAULT</label><br>
+            <input type="radio" name="sel_BG" value="custom_BG" id="custom_BG" onclick="set_BGimg()">
+            <label for="custom_BG">CUSTOM</label>
+            <input type="button" onclick="set_BGimg()" value="적용"><br>
+            <label for="bg_url_dark">다크모드 배경 url</label><br>
+            <input type="text" id="bg_url_dark" placeholder="다크모드 배경 url" style="width: 30%;"><br>
+            <label for="bg_url_white">라이트모드 배경 url</label><br>
+            <input type="text" id="bg_url_white" placeholder="라이트모드 배경 url" style="width: 30%;">
+        </div>
+        
         <div class="set_MainMenu">
             <h3>바로가기 키 설정</h3>
             <button type="button" class="append_link" alt="링크추가" title="요소 추가" onclick="append_quick_link()"></button>
@@ -121,21 +121,7 @@
             
 
             <table class="set_MainMenu_table">
-                <!-- <th class="set_MainMenu_table_th">1</th>
-                <th class="set_MainMenu_table_th">2</th>
-                <th class="set_MainMenu_table_th">3</th>
-                <th class="set_MainMenu_table_th">4</th>
-                <th class="set_MainMenu_table_th">5</th>
-                <th class="set_MainMenu_table_th">6</th>
-                <th class="set_MainMenu_table_th">7</th>
-                <th class="set_MainMenu_table_th">8</th>
-                <th class="set_MainMenu_table_th">9</th>
-                <th class="set_MainMenu_table_th">10</th>
-                <th class="set_MainMenu_table_th">11</th>
-                <th class="set_MainMenu_table_th">12</th>
-                <th class="set_MainMenu_table_th">13</th>
-                <th class="set_MainMenu_table_th">14</th>
-                <th class="set_MainMenu_table_th">15</th> -->
+
             </table>
         </div>
     </div>
@@ -143,8 +129,4 @@
 </body>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src='js.js'></script>
-<!-- <script>
-    $('head').append('<script src=\'js.js\'><\/script>');
-</script> -->
-
 </html>
