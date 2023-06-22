@@ -317,6 +317,7 @@ label.remove_link:hover{
 }
 .Clock{
     padding: 0 10px 0 10px;
+    user-select: none;
     display: table;
     margin: 0 auto;
     text-align: center;
